@@ -1,0 +1,158 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Testimonies</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  
+  <link rel="stylesheet" href="{% static 'font-6/css/all.css' %}">
+
+  <!-- Google Fonts -->
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'testimonies.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main-cont">
+        <div class="body">
+            <img class="body-im" src="{% static 'img/images/im12.jpg' %}" alt="">
+            <div class="header">
+                <div class="links">
+                    <a href="{% url 'index' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'sermons' %}">Sermons</a>
+                    <a href="{% url 'testimonies' %}">Testimonies</a>
+                    <a href="{% url 'giving' %}">Giving</a>
+                    <a href="{% url 'gallery' %}">Gallery</a>
+                </div>
+                <input type="checkbox" id="input">
+                <label for="input">
+                    <div class="divbars">
+                        <i class="fas fa-bars bars"></i>
+                    </div>
+                </label>
+            </div>
+            <div class="cont1">
+                <p class="p1">Testimonies</p>
+            </div>
+        </div>
+        <div class="hid">
+            <div class="close">
+                <i class="fas fa-close"></i>
+            </div>
+            <div class="links1">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'sermons' %}">Sermons</a>
+                <a href="{% url 'testimonies' %}">Testimonies</a>
+                <a href="{% url 'giving' %}">Giving</a>
+                <a href="{% url 'gallery' %}">Gallery</a>
+            </div>
+            
+        </div>
+    </div>
+    <main id="main">
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container">
+    
+            <div class="section-title">
+                <h2>Testimonials</h2>
+                <p>2 Timothy 1:8 "Therefore do not be ashamed of the testimony about our Lord, nor of me his prisoner, but share in suffering for the gospel by the power of God"</p>
+            </div>
+    
+            {% for testimony in testimonies%}
+            
+            {% endfor %}
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                {% for testimony in testimonies%}
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        {{testimony.testimony}}
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src={{testimony.imageURL}} class="testimonial-img" alt="">
+                    <h3>{{testimony.name}}</h3>
+                    <h4>{{testimony.description}}</h4>
+                    </div>
+                </div><!-- End testimonial item -->
+                {% endfor %}
+                
+    
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+        </div>
+        </section><!-- End Testimonials Section -->
+        <section class="section">
+            <div class="testimony-img">
+                <div class="grid1">
+                    <img class="img" src="{% static 'img/images/im12.jpg' %}" alt="">
+                    <p class="im-p">Testimony Time!!</p>
+                </div>
+            </div>
+            <div class="form">
+                <div>
+                    <p class="p1">Share your testimony today!!</p>
+                    <p class="p2"><i class="fas fa-check"></i> Powerful testimonies like yours are what empowers us to stand up in the faith! </p>
+                </div>
+                <div class="line4">
+                    <form action="#" method="POST">
+                        <p class="info">Your Full Name</p>
+                        <input type="text" placeholder="Eg. Small PDKOD " name="Name" id="" required>
+                        <p class="info">Your Email <em>*</em></p>
+                        <input type="email" name="Email" placeholder="Eg. smallpdkod00@gmail.com" id="" required>
+                        <p class="info">Subject<em>*</em></p>
+                        <input type="text" name="Subject" placeholder="Eg. my life changing testimony" id="" required>
+                        <p class="info">Message</p>
+                        <textarea name="message" id="" placeholder="Enter text here"></textarea>
+                        <div class="bttn">
+                            <button type="submit">Share</button>
+                        </div>
+                    </form>
+            </div>
+        </section>
+    </main><!-- End #main -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> 
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
+    
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'main1.js' %}"></script>
+
+</body>
+
+</html>

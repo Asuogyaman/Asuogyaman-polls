@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+
+ {% block branding %}
+    <h1 style ="font-weight: 500" id="site-name">
+        ADMINISTRATION
+    </h1> 
+     {% comment %} <h1 id="site-tagline">MIS ADMINISTRATION</h1>  {% endcomment %}
+     <a href="{% url 'index' %}" style="align-items:center; display:flex; justify-content:right;",class="button">Home</a>
+ {% endblock %} 
+
+
+
+
+{% block content %}
+    <div class="app-index">
+        {# Remove or comment out the following block #}
+        {# <div class="module" id="recent-actions-module">
+            <h2>Recent Actions</h2>
+            <div class="actions">
+                <ul>
+                    {% for action in recent_actions %}
+                    <li class="action">{{ action }}</li>
+                    {% empty %}
+                    <li class="none">No recent actions.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div> #}
+    </div>
+{% endblock %}

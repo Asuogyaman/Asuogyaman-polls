@@ -1,0 +1,225 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box; 
+    background-color: #111827;
+    font-family: 'montserrat', sans-serif;
+
+}
+::-webkit-scrollbar{
+    display:none;
+}
+.chart-wrapper div{
+    
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+    display:flex;
+    /* background-color: red; */
+    width: 500px;
+    /* background-color: red; */
+}
+
+.chart-wrapper div{
+    height: 60vh;
+}
+
+.chart-wrapper{
+    /* margin: 30px; */
+    display:flex;
+    width: 100vw;
+    padding: 10px 60px;
+    justify-content: center;
+    /* margin: -10px; */
+    flex-wrap:wrap;
+    text-align: center;
+}
+
+
+
+.header{
+    box-shadow: 1px 1px 6px black;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    top:0;
+    z-index:2;
+}
+
+.header .title{
+    color: #fff;
+    /* font-size: 25px; */
+    /* font-weight: 700; */
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 15px;
+    height: 60px;
+    /* justify-content: flex-start; */
+    display:flex;
+    /* width: 100%; */
+    align-items: center;
+    
+
+}
+
+@media(max-width: 468px){
+    .header .title{
+        width: 100%;
+        padding-left:25px;
+    
+    }
+}
+
+.header .icons{
+    position: absolute;
+    color: white;
+    top:15px;
+    right:15px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+
+}
+
+.header .icons button{
+    border: none;
+    padding: 5px 10px; 
+    color: white;
+}
+
+
+
+.body{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width:100vw;
+    justify-content: center;
+    padding-top: 75px;
+    /* background-color: #111827; */
+    overflow: hidden;
+}
+
+.image-wrapper div{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px; */
+}
+
+.image-wrapper{
+    padding: 0px 100px;
+    width: 100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.image-wrapper div img{
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+
+
+.box{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.box-wrapper{
+    display:flex;
+    width: 100vw;
+    padding: 10px 60px;
+    justify-content: center;
+    margin: -10px;
+    flex-wrap:wrap;
+    text-align: center;
+}
+.box-wrapper .box-inner{
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    display:flex;
+    /* background-color: red; */
+    width: 50%;
+    
+}
+
+.circle{
+    position:absolute;
+    /* width:100px; */
+    /* height: 100px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box .text{
+    color: white;
+    position:absolute;
+    align-items: center;
+    text-align: center;
+}
+.points.marked{
+    animation: glow 0.04s linear forwards;
+    animation-delay: calc(var(--i)*0.01s);
+}
+
+.circle .points {
+    width: 2px;
+    height: 5px;
+    background: #0007;
+    position: absolute;
+    transform: rotate(calc(var(--i)*var(--rot))) translateY(-50px);
+    
+}
+
+
+.progress-wrapper{
+    padding: 10px 0px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.progress-box{
+    width: 503px;
+    padding: 0px 70px;
+    border-radius: 5px;
+    border-radius: 10px;
+}
+
+.progress-box .progress{
+    background: rgba(24, 110, 242, .2);
+    height: 7px;
+    border-radius: 10px;
+}
+
+.progress-item h2, .progress-item span{
+    font-size: 18px;
+    color: white;
+    font-weight:400;
+    margin: 10px 0;
+}
+
+@keyframes glow{
+    0%{
+        background: #0007;
+        box-shadow: none;
+    }
+    100%{
+        background: #0f0;
+        /* background: blue; */
+        box-shadow: 0 0 10px #0f0;
+        /* box-shadow: 0 0 10px blue; */
+    }
+}

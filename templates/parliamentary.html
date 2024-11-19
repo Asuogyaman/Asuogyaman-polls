@@ -1,0 +1,216 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href={% static 'index.css' %}>
+    {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> {% endcomment %}
+    <link rel="stylesheet" href={% static 'bootstrap.min.css' %}>
+    <link rel="stylesheet" href={% static 'aos.css'%}>
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font-6/css/all.css' %}">
+    <script src={% static 'chart.js'%}></script>
+    <script src={% static 'bar.js'%}></script>
+  </head>
+  <body>
+    
+    <div class="body">
+      <div class="header">
+        <div class="title">
+          <p>Asuogyaman <br> District polls</p>
+        </div>
+        <div class="icons">
+          <a href="admin">
+            {{user.logout}}
+            <button>ADMIN</button>
+          </a>
+          <div>
+            <a href="logout"><i class="fas fa-sign-out">
+            </i></a>
+          </div>
+          
+        </div> 
+      </div>
+
+      <span style="display:flex; width: 100vw; justify-content: space-between">
+        {%if user.is_authenticated%}
+        <div style="color: white; font-size: 12px;  margin-left: 20px; height: 30px;">Hello, {{user}}</div>
+        {%endif%}
+        <a style="text-decoration: none;" href="/"><div style="color: white; text-decoration: none;  font-size: 12px;  margin-left: 20px; padding-right: 50px; height: 30px;">Presidential</div></a>
+      </span>
+
+      <div>
+        <h4 style="color: white;">Parliamentary Elections
+        </h4>
+      </div>
+
+      <div class="image-wrapper">
+        <div data-aos-duration="1000" data-aos="fade-right">
+          <img src={% static 'images/pius_npp.png' %} alt="">
+        </div>
+        <div data-aos-duration="1000" data-aos="fade-left">
+          <img src={% static 'images/thomas_ndc.png' %} alt="">
+        </div>
+      </div>
+
+      <h6 style="color: white; text-align: center">
+        <p>
+          Casted votes:
+        </p>
+        <p style="font-weight: bold; letter-spacing: 3px; font-size: 20px">
+          {{total_votes}}
+        </p>  
+      </h6>
+
+      <div class="box-wrapper">
+        {% if percent %}
+        {% for i in percent %}
+        <div data-aos-duration="1000" data-aos="zoom-in" class="box-inner">
+          <div class="box">
+            <div class="circle" data-dots="100" data-percent = "{{i.percent}}">
+            </div>
+            <div class="text">
+              <h5>{{i.percent}}%</h5>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {%else%}
+        <h6 style="width: 100vw; color: white; text-align: center">Sorry, "No parties to display"</h6>
+        {% endif %}
+      </div>
+      
+
+
+      <div class="progress-wrapper">
+        <div class="progress-box">
+          {% for i in percent %}
+          {% comment %} {% for i in i%} {% endcomment %}
+          <div class="progress-item">
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 style="text-transform: uppercase">{{i.party}}</h2>
+              <span>{{i.percent}}%</span>
+            </div>
+            <div class="progress">
+              <div data-aos-duration="3000" data-aos="fade-right" class="progress-bar" role="progressbar" style="width: {{i.percent}}%" aria-valuenow="{{i.percent}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          {% endfor %}
+          <br><br>
+          
+        </div>
+      </div>
+
+      <div class="chart-wrapper">
+          <div class="chart">
+            
+          <canvas id="myChart1" width="400" height="300" data-aos="fade-right">
+            <h4>NPP</h4>
+            <script>
+              var ctx = document.getElementById("myChart1").getContext('2d');
+              var myChart1 = new Chart(ctx, {
+              type: 'pie',
+              data: {
+              labels:[{% for i in list_npp %} '{{i.c.section}}', {% endfor %}],
+              datasets:[{
+                  label: 'Votes',
+                  data : [{% for i in list_npp %} {{i.percentage}}, {% endfor %}],
+                  backgroundColor: [
+                  'rgba(255, 99, 132, 0.9)',
+                  'rgba(54, 162, 235, 0.9)',
+                  'rgba(255, 206, 86, 0.9)',
+                  'rgba(75, 192, 192, 0.9)',
+                  'rgba(153, 23, 23, .9)' ],
+                  borderColor: [
+                  'rgba(255, 99, 132, 0.9)',
+                  'rgba(54, 162, 235, 0.9)',
+                  'rgba(255, 206, 86, 0.9)',
+                  'rgba(75, 192, 192, 0.9)',
+                  'rgba(153, 23, 23, .9)',],
+                  borderWidth: 1
+              }]
+              },
+              options: {
+                scales: {
+                  y: {  // The y-axis (ordinate)
+                    beginAtZero: true,
+                    grid: {
+                      display: true  // Grid lines
+                    }
+                  },
+                  x: {  // The x-axis (abscissa)
+                    grid: {
+                      display: true  // Grid lines
+                    }
+                  }
+                }
+              }
+              })
+            </script>
+          </canvas>
+        </div>
+
+        <div class="chart">
+          <canvas id="myChart2" width="400" height="300" data-aos="fade-left">
+            <script>
+              var ctx = document.getElementById("myChart2").getContext('2d');
+              var myChart2 = new Chart(ctx, {
+              type: 'pie',
+              data: {
+              labels:[{% for i in list_ndc %} '{{i.c.section}}', {% endfor %}],
+              datasets:[{
+                  label: 'Votes',
+                  data : [{% for i in list_ndc %} {{i.percentage}}, {% endfor %}],
+                  backgroundColor: [
+                  'rgba(255, 99, 132, 0.9)',
+                  'rgba(54, 162, 235, 0.9)',
+                  'rgba(255, 206, 86, 0.9)',
+                  'rgba(75, 192, 192, 0.9)',
+                  'rgba(153, 23, 23, .9)' ],
+                  borderColor: [
+                  'rgba(255, 99, 132, 0.9)',
+                  'rgba(54, 162, 235, 0.9)',
+                  'rgba(255, 206, 86, 0.9)',
+                  'rgba(75, 192, 192, 0.9)',
+                  'rgba(153, 23, 23, .9)',],
+                  borderWidth: 1
+              }]
+              },
+              options: {
+                scales: {
+                  y: {  // The y-axis (ordinate)
+                    beginAtZero: true,
+                    grid: {
+                      display: true  // Grid lines
+                    }
+                  },
+                  x: {  // The x-axis (abscissa)
+                    grid: {
+                      display: true  // Grid lines
+                    }
+                  }
+                }
+              }
+              })
+            </script>
+          </canvas>
+        </div>
+  
+        
+      </div>
+      
+
+
+
+    </div>
+
+    
+  </body >
+  <script src={% static 'index.js'%}></script>
+  <script src={% static 'aos.js'%}></script>
+  <script>
+    AOS.init();
+  </script>
+</html>
