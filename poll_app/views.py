@@ -31,7 +31,7 @@ def index(request):
     total_votes = total_ndc + total_npp
     percent_ndc = round((total_ndc/total_votes) *100, 2)
     percent_npp = round((total_npp/total_votes) *100, 2)
-    percent = [{'party': 'Npp', 'percent': percent_npp},{'party': 'ndc', 'percent': percent_ndc}]
+    percent = [{'party': 'Npp', 'percent': percent_npp, 'votes': f"{total_npp:,}"},{'party': 'ndc', 'percent': percent_ndc, 'votes': f"{total_ndc:,}"}]
     for c in total:
         y = (c.npp_votes/total_npp)*100
         z = (c.ndc_votes/total_ndc)*100
@@ -55,7 +55,7 @@ def parliamentary(request):
     total_mp_votes = total_mp_npp + total_mp_ndc
     percent_mp_npp = round((total_mp_npp/total_mp_votes) *100, 2)
     percent_mp_ndc = round((total_mp_ndc/total_mp_votes) *100, 2)
-    percent = [{'party': 'Pius Hadzide', 'percent': percent_mp_npp},{'party': 'Thomas Ampem', 'percent': percent_mp_ndc}]
+    percent = [{'party': 'Pius Hadzide', 'percent': percent_mp_npp, 'votes': f"{total_mp_npp:,}"},{'party': 'Thomas Ampem', 'percent': percent_mp_ndc, 'votes': f"{total_mp_ndc:,}"}]
     #Pie Chart
     for c in total:
         y = (c.mp_npp/total_mp_npp)*100

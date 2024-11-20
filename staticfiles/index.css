@@ -5,6 +5,7 @@
     background-color: #111827;
     font-family: 'montserrat', sans-serif;
 
+
 }
 ::-webkit-scrollbar{
     display:none;
@@ -26,16 +27,13 @@
 }
 
 .chart-wrapper{
-    /* margin: 30px; */
     display:flex;
     width: 100vw;
     padding: 10px 60px;
     justify-content: center;
-    /* margin: -10px; */
     flex-wrap:wrap;
     text-align: center;
 }
-
 
 
 .header{
@@ -50,15 +48,11 @@
 
 .header .title{
     color: #fff;
-    /* font-size: 25px; */
-    /* font-weight: 700; */
     text-align: center;
     text-transform: uppercase;
     padding-top: 15px;
     height: 60px;
-    /* justify-content: flex-start; */
     display:flex;
-    /* width: 100%; */
     align-items: center;
     
 
@@ -100,7 +94,6 @@
     width:100vw;
     justify-content: center;
     padding-top: 75px;
-    /* background-color: #111827; */
     overflow: hidden;
 }
 

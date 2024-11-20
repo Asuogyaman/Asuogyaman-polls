@@ -98,7 +98,7 @@
           <div class="progress-item">
             <div class="d-flex align-items-center justify-content-between">
               <h2 style="text-transform: uppercase">{{i.party}}</h2>
-              <span>{{i.percent}}%</span>
+              <span>{{i.votes}} votes</span>
             </div>
             <div class="progress">
               <div data-aos-duration="3000" data-aos="fade-right" class="progress-bar" role="progressbar" style="width: {{i.percent}}%" aria-valuenow="{{i.percent}}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -111,53 +111,53 @@
       </div>
 
       <div class="chart-wrapper">
-          <div class="chart">
-            
-          <canvas id="myChart1" width="400" height="300" data-aos="fade-right">
-            <h4>NPP</h4>
-            <script>
-              var ctx = document.getElementById("myChart1").getContext('2d');
-              var myChart1 = new Chart(ctx, {
-              type: 'pie',
-              data: {
-              labels:[{% for i in list_npp %} '{{i.c.section}}', {% endfor %}],
-              datasets:[{
-                  label: 'Votes',
-                  data : [{% for i in list_npp %} {{i.percentage}}, {% endfor %}],
-                  backgroundColor: [
-                  'rgba(255, 99, 132, 0.9)',
-                  'rgba(54, 162, 235, 0.9)',
-                  'rgba(255, 206, 86, 0.9)',
-                  'rgba(75, 192, 192, 0.9)',
-                  'rgba(153, 23, 23, .9)' ],
-                  borderColor: [
-                  'rgba(255, 99, 132, 0.9)',
-                  'rgba(54, 162, 235, 0.9)',
-                  'rgba(255, 206, 86, 0.9)',
-                  'rgba(75, 192, 192, 0.9)',
-                  'rgba(153, 23, 23, .9)',],
-                  borderWidth: 1
-              }]
-              },
-              options: {
-                scales: {
-                  y: {  // The y-axis (ordinate)
-                    beginAtZero: true,
-                    grid: {
-                      display: true  // Grid lines
-                    }
-                  },
-                  x: {  // The x-axis (abscissa)
-                    grid: {
-                      display: true  // Grid lines
+          <div class="chart" style="display:flex; flex-direction:column; position:relative; justify-content: center; align-items: center; text-align: center;">
+            <canvas id="myChart1" width="400" height="300" data-aos="fade-right">
+              <h4>NPP</h4>
+              <script>
+                var ctx = document.getElementById("myChart1").getContext('2d');
+                var myChart1 = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                labels:[{% for i in list_npp %} '{{i.c.section}}', {% endfor %}],
+                datasets:[{
+                    label: 'Votes',
+                    data : [{% for i in list_npp %} {{i.percentage}}, {% endfor %}],
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.9)',
+                    'rgba(54, 162, 235, 0.9)',
+                    'rgba(255, 206, 86, 0.9)',
+                    'rgba(75, 192, 192, 0.9)',
+                    'rgba(153, 23, 23, .9)' ],
+                    borderColor: [
+                    'rgba(255, 99, 132, 0.9)',
+                    'rgba(54, 162, 235, 0.9)',
+                    'rgba(255, 206, 86, 0.9)',
+                    'rgba(75, 192, 192, 0.9)',
+                    'rgba(153, 23, 23, .9)',],
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                  scales: {
+                    y: {  // The y-axis (ordinate)
+                      beginAtZero: true,
+                      grid: {
+                        display: true  // Grid lines
+                      }
+                    },
+                    x: {  // The x-axis (abscissa)
+                      grid: {
+                        display: true  // Grid lines
+                      }
                     }
                   }
                 }
-              }
-              })
-            </script>
-          </canvas>
-        </div>
+                })
+              </script>
+            </canvas>
+            <h3 style="position:absolute; align-items: center; justify-content: center; text-align: center; padding-left: 20px; background: transparent">NPP</h1>
+          </div>
 
         <div class="chart">
           <canvas id="myChart2" width="400" height="300" data-aos="fade-left">
@@ -203,6 +203,8 @@
               })
             </script>
           </canvas>
+          <h3 style="position:absolute; align-items: center; justify-content: center; text-align: center; padding-left: 20px; background: transparent">NDC</h1>
+
         </div>
   
         
